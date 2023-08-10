@@ -1,0 +1,31 @@
+
+#git clone https://gitlab.freedesktop.org/pipewire/pipewire.git
+
+systemctl stop --global pipewire-pulse.{socket,service} pipewire.{socket,service} wireplumber
+
+mv /usr/bin/pipewire-pulse "/usr/bin/pipewire-pulse_$(date '+%Y%m%d_%H%M%S')"
+ls /usr/bin/pipewire-pulse*
+
+cd pipewire
+ninja -C builddir uninstall
+#systemctl --global daemon-reload
+
+	meson clean
+	rm -rf builddir
+	meson setup builddir
+	meson configure builddir -Dprefix=/usr
+	meson compile -C builddir
+
+meson install -C builddir
+
+	mv /usr/lib/systemd/user/pipewire-pulse* /etc/systemd/user/
+	cd /etc/systemd/user
+	nano pipewire-pulse.service pipewire-pulse.socket
+
+	systemctl --global daemon-reload
+
+systemctl enable --now --global pipewire.{socket,service} wireplumber
+systemctl disable --now --global pipewire-pulse.{socket,service}
+
+echo "pipewire-pulse &>/dev/null &" > /etc/profile.d/pipewire-pulse.sh
+

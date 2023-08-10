@@ -1,0 +1,14 @@
+git clone https://github.com/mesonbuild/meson.git
+
+apt install build-essential
+apt install meson ninja-build
+
+
+	if [ -e /usr/bin/meson ]; then
+		mv /usr/bin/meson "/usr/bin/meson-$(/usr/bin/meson -v)"
+	else
+		mv /usr/bin/meson "/usr/bin/meson-orig"
+	fi
+
+	ln -s "$(realpath ./meson/meson.py)" /usr/bin/meson
+
