@@ -1,4 +1,6 @@
 
+# Referenced - https://github.com/PipeWire/pipewire/blob/master/INSTALL.md
+
 #git clone https://gitlab.freedesktop.org/pipewire/pipewire.git
 
 systemctl stop --global pipewire-pulse.{socket,service} pipewire.{socket,service} wireplumber
