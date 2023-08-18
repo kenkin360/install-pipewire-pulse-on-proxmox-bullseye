@@ -1,6 +1,6 @@
 # Referenced - https://wiki.debian.org/PipeWire
 
-#apt purge pulseaudio
+#apt purge pulseaudio*
 #apt install pulseaudio
 #reboot
 
