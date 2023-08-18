@@ -4,11 +4,11 @@
 #apt install pulseaudio
 #reboot
 
-apt purge libspa-0.2-modules
-apt install pipewire xdg-desktop-portal pulseaudio-utils
-
 systemctl disable --now --global pipewire pipewire-pulse
 rm /etc/systemd/user/pipewire-pulse.*
+
+apt purge libspa-0.2-modules
+apt install pipewire xdg-desktop-portal pulseaudio-utils
 
 cp /usr/share/doc/pipewire/examples/systemd/user/pipewire-pulse.* /etc/systemd/user/
 
