@@ -4,7 +4,7 @@
 #apt install pulseaudio
 #reboot
 
-systemctl disable --now --global pipewire pipewire-pulse
+systemctl disable --now --global pipewire.{socket,service} pipewire-pulse.{socket,service}
 rm /etc/systemd/user/pipewire-pulse.*
 
 apt purge libspa-0.2-modules
