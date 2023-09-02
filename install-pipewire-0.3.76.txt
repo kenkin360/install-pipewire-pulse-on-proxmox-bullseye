@@ -6,10 +6,10 @@ systemctl stop --global pipewire-pulse.{socket,service} pipewire.{socket,service
 mv /usr/bin/pipewire-pulse "/usr/bin/pipewire-pulse_$(date '+%Y%m%d_%H%M%S')"
 ls /usr/bin/pipewire-pulse*
 
-rm -rf pipewire
-git clone https://gitlab.freedesktop.org/pipewire/pipewire.git
+#rm -rf pipewire
+#git clone https://gitlab.freedesktop.org/pipewire/pipewire.git
+
 cd pipewire
-mkdir builddir
 ninja -C builddir uninstall
 #systemctl --global daemon-reload
 
