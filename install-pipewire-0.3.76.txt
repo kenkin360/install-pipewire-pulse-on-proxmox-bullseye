@@ -32,3 +32,5 @@ systemctl disable --now --global pipewire-pulse.{socket,service}
 
 echo "pipewire-pulse &>/dev/null &" > /etc/profile.d/pipewire-pulse.sh
 
+# Then add the following line to `pulse.cmd` section in /usr/share/pipewire/pipewire-pulse.conf 
+#{ cmd = "load-module" args = "module-switch-on-connect" }
